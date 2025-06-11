@@ -6,6 +6,8 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+     const backendUrl = process.env.REACT_APP_BACKEND_BASE_URL;
+
 
   // Get the selected role passed from RoleSelector
   const role = location.state?.role || "user";
@@ -17,7 +19,7 @@ const Login = () => {
     const password = document.getElementById("password").value;
 
     try {
-      const response = await fetch("http://localhost:5000/submit-login", {
+      const response = await fetch(`${backendUrl}/submit-login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, role }),
