@@ -12,6 +12,8 @@ const EventBookingForm = () => {
 
   const { selectedDate, fullName, email } = location.state || {};
   const bookingID = `BOOK-${Math.random().toString(36).substr(2, 8).toUpperCase()}`;
+    const backendUrl = process.env.REACT_APP_BACKEND_BASE_URL;
+
 
   const [formData, setFormData] = useState({
     fullName: fullName || '',
@@ -92,7 +94,7 @@ const EventBookingForm = () => {
     }
 
     try {
-      const orderResponse = await axios.post('http://localhost:5000/create-order', { amount: 100 });
+      const orderResponse = await axios.post(`${backendUrl}/create-order`, { amount: 100 });
       const { amount, id: order_id, currency } = orderResponse.data;
 
       const options = {
@@ -138,12 +140,12 @@ const EventBookingForm = () => {
   const submitBooking = async (data) => {
     try {
       // Save in main Booking collection
-      await axios.post('http://localhost:5000/submit-form', data, {
+      await axios.post(`${backendUrl}/submit-form`, data, {
         headers: { 'Content-Type': 'application/json' },
       });
 
       // Save separately in Hotel-specific collection
-      await axios.post(`http://localhost:5000/hotel/${encodeURIComponent(formData.hall)}/book-date`, {
+      await axios.post(`${backendUrl}/hotel/${encodeURIComponent(formData.hall)}/book-date`, {
         name: data.fullName,
         email: data.email,
         selectedDate: data.eventDate,

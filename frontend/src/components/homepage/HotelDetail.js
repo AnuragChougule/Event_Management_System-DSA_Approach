@@ -20,6 +20,8 @@ function HotelDetail() {
   const navigate = useNavigate();
   const [showCalendar, setShowCalendar] = useState(false);
   const [showBookButton, setShowBookButton] = useState(false);
+  const backendUrl = process.env.REACT_APP_BACKEND_BASE_URL;
+
 
 
   useEffect(() => {
@@ -46,14 +48,14 @@ function HotelDetail() {
         }
       });
 
-    axios.get("http://localhost:5000/get-user-info").then((res) => {
+    axios.get(`${backendUrl}/get-user-info`).then((res) => {
       if (res.data.success) {
         setUserInfo({ fullName: res.data.username, email: res.data.email });
       }
     });
 
     axios
-      .get(`http://localhost:5000/hotel/${hotelName}/booked-dates`)
+      .get(`${backendUrl}/hotel/${hotelName}/booked-dates`)
       .then((response) => {
         const booked = response.data.map((dateStr) => new Date(dateStr));
         setBookedDates(booked);

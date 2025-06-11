@@ -5,10 +5,11 @@ import axios from 'axios';
 const PrivateRoute = ({ element: Component }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
+   const backendUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/is-logged-in', { withCredentials: true }) // ✅ FIXED
+      .get(`${backendUrl}/is-logged-in`, { withCredentials: true }) // ✅ FIXED
       .then((response) => {
         setIsLoggedIn(response.data.loggedIn);
       })

@@ -10,6 +10,8 @@ const Home = () => {
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
+      const backendUrl = process.env.REACT_APP_BACKEND_BASE_URL;
+
 
 
     const [filters, setFilters] = useState({
@@ -27,7 +29,7 @@ const Home = () => {
     useEffect(() => {
         const fetchBookings = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/admin/bookings');
+                const res = await axios.get(`${backendUrl}/admin/bookings`);
                 setBookings(res.data);
                 setFilteredBookings(res.data);
             } catch (err) {

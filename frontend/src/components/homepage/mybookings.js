@@ -8,11 +8,13 @@ const YourComponent = () => {
   const [error, setError] = useState('');
   const [bookings, setBookings] = useState([]);
   const navigate = useNavigate(); // Initialize navigate
+  const backendUrl = process.env.REACT_APP_BACKEND_BASE_URL;
+
 
   const fetchBookings = async (email) => {
     try {
       // Send a POST request to the backend to fetch bookings for the email
-      const response = await axios.post('http://localhost:5000/bookings', { email });
+      const response = await axios.post(`${backendUrl}/bookings`, { email });
 
       // If the request is successful, set the bookings state
       setBookings(response.data);
