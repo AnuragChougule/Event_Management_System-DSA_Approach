@@ -11,11 +11,13 @@ const Profile = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
+      const backendUrl = process.env.REACT_APP_BACKEND_BASE_URL;
+
 
     useEffect(() => {
         const fetchProfileAndBookings = async () => {
             try {
-                const userRes = await axios.get('http://localhost:5000/get-user-info', { withCredentials: true });
+                const userRes = await axios.get(`${backendUrl}/get-user-info`, { withCredentials: true });
                 if (!userRes.data.success) {
                     setError(userRes.data.message || 'Failed to fetch user info');
                     setLoading(false);
@@ -26,7 +28,7 @@ const Profile = () => {
                 setUserInfo({ email, username });
                 setUsername(username);
 
-                const bookingsRes = await axios.post('http://localhost:5000/bookings', { email }, { withCredentials: true });
+                const bookingsRes = await axios.post(`${backendUrl}/bookings`, { email }, { withCredentials: true });
                 setBookings(Array.isArray(bookingsRes.data) ? bookingsRes.data : []);
                 setLoading(false);
             } catch (err) {
@@ -41,7 +43,7 @@ const Profile = () => {
 
     const handleSave = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/update-user-info', { username }, { withCredentials: true });
+            const response = await axios.post(`${backendUrl}/update-user-info`, { username }, { withCredentials: true });
             if (response.data.success) {
                 setUserInfo({ ...userInfo, username });
                 setMessage('Profile updated successfully!');
