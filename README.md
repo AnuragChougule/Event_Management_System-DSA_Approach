@@ -76,6 +76,7 @@ cd event-management-system
 ```bash
 cd backend
 npm install
+node server.js
 ```
 
 Create a `.env` file with:
