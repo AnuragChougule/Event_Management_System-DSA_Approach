@@ -170,6 +170,6 @@ Thanks to:
 * MongoDB Atlas for free-tier DB hosting
 * KLE Tech for academic support and infrastructure
 
-📧 For queries, reach out at: \[[anuragchougule0160@gmail.com](mailto:your-email@example.com)]
+📧 For queries, reach out at: \[[anuragchougule0160@gmail.com](anuragchougule0160@gmail.com)]
 
 
