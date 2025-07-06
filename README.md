@@ -145,8 +145,8 @@ npm start
 
 **Team Members (CSE, KLE Tech, Belagavi)**
 
-* Prashant Uppar (02FE22BCS069)
 * Anurag Chougule (02FE22BCS021)
+* Prashant Uppar (02FE22BCS069)
 * Chandni Kumari (02FE22BCS026)
 * Vanashree A N (02FE22BCS171)
 
@@ -169,6 +169,6 @@ Thanks to:
 * MongoDB Atlas for free-tier DB hosting
 * KLE Tech for academic support and infrastructure
 
-📧 For queries, reach out at: \[[prashantuppar2004@gmail.com](mailto:your-email@example.com)]
+📧 For queries, reach out at: \[[anuragchougule0160@gmail.com](mailto:your-email@example.com)]
 
 
